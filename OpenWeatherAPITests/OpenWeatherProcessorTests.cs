@@ -14,7 +14,6 @@ namespace OpenWeatherAPITests
             ApiHelper.InitializeClient();
 
             Assert.ThrowsAsync<ArgumentException>(owp.GetOneCallAsync);
-
         }
 
         [Fact]
