@@ -75,6 +75,9 @@ namespace OpenWeatherAPI
         /// <returns></returns>
         public async Task<OWCurrentWeaterModel> GetCurrentWeatherAsync()
         {
+            if (ApiKey == null) throw new ArgumentException("Aucune API Key");
+            if (ApiHelper.ApiClient == null) throw new ArgumentException("ApiClient non initialisé");
+
             EndPoint = $"/weather?";
 
             /// Src : https://stackoverflow.com/a/14517976/503842
@@ -100,7 +103,7 @@ namespace OpenWeatherAPI
                 {
                     OpenWeatherOneCallModel result = await response.Content.ReadAsAsync<OpenWeatherOneCallModel>();
                     return result;
-                }
+                } 
 
                 return null;
             }
