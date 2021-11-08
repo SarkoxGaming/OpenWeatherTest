@@ -50,7 +50,9 @@ namespace OpenWeatherAPI
         /// <returns></returns>
         public async Task<OpenWeatherOneCallModel> GetOneCallAsync()
         {
-            
+            if (ApiKey == null) throw new ArgumentException("Aucune API Key");
+            if (ApiHelper.ApiClient == null) throw new ArgumentException("ApiClient non initialisé");
+
             EndPoint = $"/onecall?";
 
             /// Src : https://stackoverflow.com/a/14517976/503842
